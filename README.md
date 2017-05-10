@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```sh
+$ sudo -u postgres psql
+# create user <username> with password '<yourawesomepassword>';
+# create database "Gnote_development" owner <username>; 
+```
