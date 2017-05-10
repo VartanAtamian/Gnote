@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/sh -e
 #
 # http://guides.rubyonrails.org/getting_started.html
 # gems => sorcery
 
-websitename='Gnote'
+websitename='GGGG'
 idtype='smallserial' # primary_key
 
 ruby -v
 rails --version
-exit
+#exit
 
 # générer le framework local
 rails new "$websitename" -d postgresql
