@@ -5,7 +5,7 @@
 
 websitename='temp'
 idtype='primary_key' # smallserial
-pguser='pguser'
+pguser='pguser123'
 pgpass='123soleil'
 
 ruby -v
@@ -25,9 +25,9 @@ sed -i 's/^\(.*\)#\(password:\).*$/\1\2 '"$pgpass"/ config/database.yml
 # création de la BDD
 sudo -u postgres psql <<EOF
 create user "$pguser" with password '$pgpass';
-create database "${pguser}_development" owner "$pguser";
+create database "${websitename}_development" owner "$pguser";
+\\q
 EOF
-./bin/rails db:create
 
 # ajouter les contrôleurs
 ./bin/rails generate controller Welcome index
