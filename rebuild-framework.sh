@@ -3,7 +3,7 @@
 # http://guides.rubyonrails.org/getting_started.html
 # gems => sorcery
 
-websitename='GGGG'
+websitename='temp'
 idtype='smallserial' # primary_key
 
 ruby -v
@@ -11,7 +11,9 @@ rails --version
 #exit
 
 # générer le framework local
-rails new "$websitename" -d postgresql
+rails new "$websitename" -d postgresql --skip-git
+cp -v .gitignore "$websitename"
+rm -v "$websitename"/README.md
 cd "$websitename"
 
 # ajouter les contrôleurs
