@@ -1,16 +1,17 @@
 #!/bin/sh
 #
 # http://guides.rubyonrails.org/getting_started.html
+# gems => sorcery
 
 websitename='Gnote'
-idtype='smallserial'
+idtype='smallserial' # primary_key
 
 ruby -v
 rails --version
 exit
 
 # générer le framework local
-rails new "$websitename" ­-d postgresql
+rails new "$websitename" -d postgresql
 cd "$websitename"
 
 # ajouter les contrôleurs
@@ -27,7 +28,8 @@ firstName:string \
 lastName:string \
 email:string \
 secretHash:string \
-role:smallint
+teacher:boolean \
+admin:boolean
 
 ./bin/rails generate model Discipline \
 disciplineId:"$idtype" \
@@ -42,7 +44,6 @@ examDate:date
 ./bin/rails generate model Assessment \
 assessmentId:"$idtype" \
 grade:real
-
 
 # migration de la base de données
 ./bin/rails db:migrate
