@@ -1,10 +1,12 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 #
 # http://guides.rubyonrails.org/getting_started.html
 # gems => sorcery
 
 websitename='temp'
-idtype='smallserial' # primary_key
+idtype='primary_key' # smallserial
+pguser='pguser'
+pgpass='123soleil'
 
 ruby -v
 rails --version
@@ -15,6 +17,17 @@ rails new "$websitename" -d postgresql --skip-git
 cp -v .gitignore "$websitename"
 rm -v "$websitename"/README.md
 cd "$websitename"
+
+# configuration de la BDD
+sed -i 's/^\(.*\)#\(username:\).*$/\1\2 '"$pguser"/ config/database.yml
+sed -i 's/^\(.*\)#\(password:\).*$/\1\2 '"$pgpass"/ config/database.yml
+
+# création de la BDD
+sudo -u postgres psql <<EOF
+create user "$pguser" with password '$pgpass';
+create database "${pguser}_development" owner "$pguser";
+EOF
+./bin/rails db:create
 
 # ajouter les contrôleurs
 ./bin/rails generate controller Welcome index
@@ -47,5 +60,5 @@ examDate:date
 assessmentId:"$idtype" \
 grade:real
 
-# migration de la base de données
+# migration de la BDD
 ./bin/rails db:migrate
