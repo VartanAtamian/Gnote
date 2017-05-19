@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519105708) do
+ActiveRecord::Schema.define(version: 20170519115926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assessments", force: :cascade do |t|
-    t.string "assessmentId"
+    t.integer "examID"
+    t.integer "studentID"
     t.float "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "disciplines", force: :cascade do |t|
-    t.string "disciplineId"
-    t.string "title"
+    t.string "disciplineTitle"
+    t.integer "teacherID"
     t.date "startDate"
     t.date "endDate"
     t.datetime "created_at", null: false
@@ -32,20 +33,20 @@ ActiveRecord::Schema.define(version: 20170519105708) do
   end
 
   create_table "exams", force: :cascade do |t|
-    t.string "examId"
+    t.string "examTitle"
+    t.integer "disciplineID"
     t.date "examDate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "userId"
+    t.string "email"
     t.string "firstName"
     t.string "lastName"
-    t.string "email"
     t.string "secretHash"
-    t.boolean "teacher"
-    t.boolean "admin"
+    t.boolean "isTeacher"
+    t.boolean "isAdmin"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  assessmentId: MyString
+  examID: 1
+  studentID: 1
   grade: 1.5
 
 two:
-  assessmentId: MyString
+  examID: 1
+  studentID: 1
   grade: 1.5

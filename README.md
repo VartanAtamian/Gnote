@@ -18,12 +18,11 @@
 - Un enseignant peut inviter un étudiant en précisant son nom, son prénom et son adresse email
 - Lorsqu'un enseignant invite un étudiant, ce dernier reçoit une invitation par email
 
+## Déploiement
 
-
-## Création de la base de données PostgreSQL
+### Création de l'utilisateur de la base de données PostgreSQL
 
 ```sh
 $ sudo -u postgres psql
-create user <username> with password '<yourawesomepassword>';
-create database "Gnote_development" owner <username>;
+postgres=# CREATE USER "pguser123" WITH CREATEDB ENCRYPTED PASSWORD '123soleil';
 ```

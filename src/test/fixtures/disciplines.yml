@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  disciplineId: MyString
-  title: MyString
+  disciplineTitle: MyString
+  teacherID: 1
   startDate: 2017-05-19
   endDate: 2017-05-19
 
 two:
-  disciplineId: MyString
-  title: MyString
+  disciplineTitle: MyString
+  teacherID: 1
   startDate: 2017-05-19
   endDate: 2017-05-19

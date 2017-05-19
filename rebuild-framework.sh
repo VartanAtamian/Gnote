@@ -4,7 +4,6 @@
 # gems => sorcery
 
 websitename='Gnote'
-idtype='primary_key' # smallserial
 pguser='pguser123'
 pgpass='123soleil'
 
@@ -12,6 +11,7 @@ ruby -v
 rails --version
 
 # générer le framework local
+rm -rf "$websitename"
 rails new "$websitename" -d postgresql --skip-git
 cp -v .gitignore "$websitename"
 rm -v "$websitename"/README.md
@@ -35,10 +35,7 @@ CREATE USER "$pguser" WITH CREATEDB ENCRYPTED PASSWORD '$pgpass';
 \\q
 EOF
 
-exit
-
 # ajouter les contrôleurs
-sleep 5
 ruby bin/rails generate controller Welcome index
 ruby bin/rails generate controller Users
 ruby bin/rails generate controller Disciplines
@@ -47,32 +44,28 @@ ruby bin/rails generate controller Assessments
 
 # ajouter les modèles
 ruby bin/rails generate model User \
-    userId:"$idtype" \
+    email:string \
     firstName:string \
     lastName:string \
-    email:string \
     secretHash:string \
-    teacher:boolean \
-    admin:boolean
+    isTeacher:boolean \
+    isAdmin:boolean
 
 ruby bin/rails generate model Discipline \
-    disciplineId:"$idtype" \
-    title:string \
+    disciplineTitle:string \
+    teacherID:integer \
     startDate:date \
     endDate:date
 
 ruby bin/rails generate model Exam \
-    examId:"$idtype" \
+    examTitle:string \
+    disciplineID:integer \
     examDate:date
 
 ruby bin/rails generate model Assessment \
-    assessmentId:"$idtype" \
+    examID:integer \
+    studentID:integer \
     grade:float
 
 # création et migration de la BDD
-sleep 5
-ruby bin/rails db:drop
-sleep 5
-ruby bin/rails db:create
-sleep 5
-ruby bin/rails db:migrate
+ruby bin/rails db:create db:migrate db:seed

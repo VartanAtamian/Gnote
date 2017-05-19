@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  examId: MyString
+  examTitle: MyString
+  disciplineID: 1
   examDate: 2017-05-19
 
 two:
-  examId: MyString
+  examTitle: MyString
+  disciplineID: 1
   examDate: 2017-05-19
