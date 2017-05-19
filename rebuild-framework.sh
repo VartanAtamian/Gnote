@@ -29,13 +29,16 @@ DROP DATABASE "${websitename}_test";
 EOF
 sudo -u postgres dropuser "$pguser" || :
 
-# création de la BDD
+# création de l'utilisateur de la BDD
 sudo -u postgres psql <<EOF
 CREATE USER "$pguser" WITH CREATEDB ENCRYPTED PASSWORD '$pgpass';
 \\q
 EOF
 
+exit
+
 # ajouter les contrôleurs
+sleep 5
 ruby bin/rails generate controller Welcome index
 ruby bin/rails generate controller Users
 ruby bin/rails generate controller Disciplines
@@ -64,7 +67,12 @@ ruby bin/rails generate model Exam \
 
 ruby bin/rails generate model Assessment \
     assessmentId:"$idtype" \
-    grade:real
+    grade:float
 
 # création et migration de la BDD
-#ruby bin/rails db:create db:migrate
+sleep 5
+ruby bin/rails db:drop
+sleep 5
+ruby bin/rails db:create
+sleep 5
+ruby bin/rails db:migrate

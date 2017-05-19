@@ -2,8 +2,8 @@
 
 one:
   assessmentId: MyString
-  grade: 
+  grade: 1.5
 
 two:
   assessmentId: MyString
-  grade: 
+  grade: 1.5
