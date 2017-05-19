@@ -3,7 +3,7 @@
 # http://guides.rubyonrails.org/getting_started.html
 # gems => sorcery
 
-websitename='temp'
+websitename='Gnote'
 idtype='primary_key' # smallserial
 pguser='pguser123'
 pgpass='123soleil'
@@ -28,46 +28,45 @@ DROP DATABASE "${websitename}_development";
 DROP DATABASE "${websitename}_test";
 \\q
 EOF
-sudo -u postgres dropuser "$pguser"
+sudo -u postgres dropuser "$pguser" || :
 
 # création de la BDD
 sudo -u postgres psql <<EOF
-CREATE USER "$pguser" WITH PASSWORD '$pgpass';
-CREATE DATABASE "${websitename}_development" OWNER "$pguser";
-CREATE DATABASE "${websitename}_test" OWNER "$pguser";
+CREATE USER "$pguser" WITH CREATEDB ENCRYPTED PASSWORD '$pgpass';
 \\q
 EOF
 
 # ajouter les contrôleurs
-./bin/rails generate controller Welcome index
-./bin/rails generate controller Users
-./bin/rails generate controller Disciplines
-./bin/rails generate controller Exams
-./bin/rails generate controller Assessments
+sleep 3
+bin/rails generate controller Welcome index
+bin/rails generate controller Users
+bin/rails generate controller Disciplines
+bin/rails generate controller Exams
+bin/rails generate controller Assessments
 
 # ajouter les modèles
-./bin/rails generate model User \
-userId:"$idtype" \
-firstName:string \
-lastName:string \
-email:string \
-secretHash:string \
-teacher:boolean \
-admin:boolean
+bin/rails generate model User \
+    userId:"$idtype" \
+    firstName:string \
+    lastName:string \
+    email:string \
+    secretHash:string \
+    teacher:boolean \
+    admin:boolean
 
-./bin/rails generate model Discipline \
-disciplineId:"$idtype" \
-title:string \
-startDate:date \
-endDate:date
+bin/rails generate model Discipline \
+    disciplineId:"$idtype" \
+    title:string \
+    startDate:date \
+    endDate:date
 
-./bin/rails generate model Exam \
-examId:"$idtype" \
-examDate:date
+bin/rails generate model Exam \
+    examId:"$idtype" \
+    examDate:date
 
-./bin/rails generate model Assessment \
-assessmentId:"$idtype" \
-grade:real
+bin/rails generate model Assessment \
+    assessmentId:"$idtype" \
+    grade:real
 
-# migration de la BDD
-./bin/rails db:migrate
+# création et migration de la BDD
+#bin/rails db:create db:migrate
