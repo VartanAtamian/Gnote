@@ -22,10 +22,19 @@ cd "$websitename"
 sed -i 's/^\(.*\)#\(username:\).*$/\1\2 '"$pguser"/ config/database.yml
 sed -i 's/^\(.*\)#\(password:\).*$/\1\2 '"$pgpass"/ config/database.yml
 
+# préparation de la BDD
+sudo -u postgres psql <<EOF
+DROP DATABASE "${websitename}_development";
+DROP DATABASE "${websitename}_test";
+\\q
+EOF
+sudo -u postgres dropuser "$pguser"
+
 # création de la BDD
 sudo -u postgres psql <<EOF
-create user "$pguser" with password '$pgpass';
-create database "${websitename}_development" owner "$pguser";
+CREATE USER "$pguser" WITH PASSWORD '$pgpass';
+CREATE DATABASE "${websitename}_development" OWNER "$pguser";
+CREATE DATABASE "${websitename}_test" OWNER "$pguser";
 \\q
 EOF
 
