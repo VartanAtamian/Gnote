@@ -8,9 +8,9 @@ idtype='primary_key' # smallserial
 pguser='pguser123'
 pgpass='123soleil'
 
+eval "$(rbenv init -)"
 ruby -v
 rails --version
-#exit
 
 # générer le framework local
 rails new "$websitename" -d postgresql --skip-git
@@ -37,15 +37,14 @@ CREATE USER "$pguser" WITH CREATEDB ENCRYPTED PASSWORD '$pgpass';
 EOF
 
 # ajouter les contrôleurs
-sleep 3
-bin/rails generate controller Welcome index
-bin/rails generate controller Users
-bin/rails generate controller Disciplines
-bin/rails generate controller Exams
-bin/rails generate controller Assessments
+ruby bin/rails generate controller Welcome index
+ruby bin/rails generate controller Users
+ruby bin/rails generate controller Disciplines
+ruby bin/rails generate controller Exams
+ruby bin/rails generate controller Assessments
 
 # ajouter les modèles
-bin/rails generate model User \
+ruby bin/rails generate model User \
     userId:"$idtype" \
     firstName:string \
     lastName:string \
@@ -54,19 +53,19 @@ bin/rails generate model User \
     teacher:boolean \
     admin:boolean
 
-bin/rails generate model Discipline \
+ruby bin/rails generate model Discipline \
     disciplineId:"$idtype" \
     title:string \
     startDate:date \
     endDate:date
 
-bin/rails generate model Exam \
+ruby bin/rails generate model Exam \
     examId:"$idtype" \
     examDate:date
 
-bin/rails generate model Assessment \
+ruby bin/rails generate model Assessment \
     assessmentId:"$idtype" \
     grade:real
 
 # création et migration de la BDD
-#bin/rails db:create db:migrate
+#ruby bin/rails db:create db:migrate

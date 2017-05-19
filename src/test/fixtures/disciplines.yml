@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  disciplineId: MyString
+  title: MyString
+  startDate: 2017-05-19
+  endDate: 2017-05-19
+
+two:
+  disciplineId: MyString
+  title: MyString
+  startDate: 2017-05-19
+  endDate: 2017-05-19
