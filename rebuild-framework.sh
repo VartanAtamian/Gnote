@@ -34,10 +34,9 @@ sudo -u postgres psql <<EOF
 CREATE USER "$pguser" WITH CREATEDB ENCRYPTED PASSWORD '$pgpass';
 \\q
 EOF
-
+exit
 # ajouter les contrôleurs
 ruby bin/rails generate controller Welcome index
-exit
 ruby bin/rails generate controller Users
 ruby bin/rails generate controller Disciplines
 ruby bin/rails generate controller Exams

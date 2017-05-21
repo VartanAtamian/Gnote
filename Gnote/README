@@ -27,7 +27,7 @@ choose  Enter your selection: [guard]
 option  Front-end framework?
 choose  Enter your selection: [bootstrap4]
 option  Add support for sending email?
-choose  Enter your selection: [smtp]
+choose  Enter your selection: [none]
 option  Authentication?
 choose  Enter your selection: [devise]
 option  Devise modules?
