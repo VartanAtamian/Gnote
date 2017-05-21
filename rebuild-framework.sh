@@ -37,6 +37,7 @@ EOF
 
 # ajouter les contrôleurs
 ruby bin/rails generate controller Welcome index
+exit
 ruby bin/rails generate controller Users
 ruby bin/rails generate controller Disciplines
 ruby bin/rails generate controller Exams
