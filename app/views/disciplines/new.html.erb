@@ -1,0 +1,10 @@
+<div>
+  <%= form_for :discipline, url: disciplines_path do |f| %>
+    <h3> New discipline </h3>
+    <div class="form-group">
+      <%= f.label :'Discipline title' %>
+      <%= f.text_field :disciplineTitle, :autofocus => true %>
+    </div>
+     <%= f.submit 'Submit' %>
+  <% end %>
+</div>
