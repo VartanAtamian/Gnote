@@ -1,6 +1,4 @@
 <h3>User</h3>
 <p>Name: <%= @user.name if @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
-<% if current_user.teacher == true %>
-	<p><%= link_to "New Discipline", new_discipline_path %>
-<%end%>
+<p><%= link_to "New Discipline", new_discipline_path %>
