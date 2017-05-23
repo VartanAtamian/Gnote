@@ -10,7 +10,7 @@
 
 	exams=Exam.create([{examTitle: 'TPNoté1'},{disciplineID: 1}])
 
-	assessments=Assessments.create([{examID: 1}, {grade: '10.0'})
+	assessments=Assessments.create([{examID: 1}, {grade: '10.0'}])
 
 
 user = CreateAdminService.new.call
