@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <h3> Disciplines </h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <% @disciplines.each do |discipline| %>
+            <tr>
+              <%= render discipline %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
