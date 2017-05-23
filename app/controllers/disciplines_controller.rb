@@ -9,7 +9,7 @@ class DisciplinesController < ApplicationController
   end
 
   def show
-    @discipline=Discipline.find(params[:id])
+    @discipline = Discipline.find(params[:id])
   end
 
   def create
