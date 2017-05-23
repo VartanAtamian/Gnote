@@ -12,6 +12,3 @@
 
 	assessments=Assessment.create([{examID: 1}, {grade: '10.0'}])
 
-
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
