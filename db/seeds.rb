@@ -6,14 +6,11 @@
 	users= User.create([{email: 'jeanluc@hotmail.fr'},{name: 'jeanluc'},{teacher: false},{admin: false}])
 
 
-	disciplines= Discipline.create([{disciplineTitle: 'Maths'},{teacherID: 1}],
-		[{disciplineTitle: 'Espagnol'},{teacherID: 2}])
+	disciplines= Discipline.create([{disciplineTitle: 'Maths'},{teacherID: 1}])
 
-	exams=Exam.create([{examTitle: 'TPNoté1'},{disciplineID: 1}],
-		[{examTitle: 'EspagnolExam'},{disciplineID: 2}])
+	exams=Exam.create([{examTitle: 'TPNoté1'},{disciplineID: 1}])
 
-	assessments=Assessments.create([{examID: 1}, {grade: '10.0'}],
-		[{examID: 2}, {grade: '12.0'}])
+	assessments=Assessments.create([{examID: 1}, {grade: '10.0'})
 
 
 user = CreateAdminService.new.call
