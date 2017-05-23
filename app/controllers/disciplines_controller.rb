@@ -1,5 +1,4 @@
 class DisciplinesController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     @disciplines = Discipline.all
@@ -7,6 +6,10 @@ class DisciplinesController < ApplicationController
 
   def new
     @discipline = Discipline.new
+  end
+
+  def show
+    @discipline=Discipline.find(params[:id])
   end
 
   def create

@@ -1,0 +1,22 @@
+= bootstrap_form_for(exam) do |f|
+  = render 'layouts/error_messages', object: exam
+  .field
+    = f.collection_select(:examTitle, :disciplineID, :examDate)
+  .field
+    = f.text_field :title
+  .field
+    = f.date_select :date
+  .actions
+    = f.submit
+
+<%= form_for(@exam) do |f| %>
+
+  <div class="field">
+    <%= f.label :examTitle %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :Date %><br>
+    <%= f.date_field :examDate %>
+  </div>
+<% end %>

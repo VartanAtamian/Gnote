@@ -1,5 +1,12 @@
 class ExamsController < ApplicationController
-  before_action :authenticate_user!
 
+
+	def new
+		@exam=Exam.new
+	end
+
+	def show
+		@exam=Exam.find(params[:id])
+	end
 
 end
