@@ -3,9 +3,7 @@
 #
 # Examples:
 #
-	users= User.create([{email: 'jeanluc@hotmail.fr'},{name: 'jeanluc'},{teacher: false},{admin: false}],
-	[{email: 'marie@hotmail.fr'},{name: 'marie'},{teacher: true},{admin: false}],
-	[{email: 'manuelpepito@hotmail.fr'},{name: 'Juan'},{teacher: true},{admin: false}])
+	users= User.create([{email: 'jeanluc@hotmail.fr'},{name: 'jeanluc'},{teacher: false},{admin: false}])
 
 
 	disciplines= Discipline.create([{disciplineTitle: 'Maths'},{teacherID: 1}],
