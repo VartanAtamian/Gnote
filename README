@@ -20,9 +20,24 @@
 
 ## Déploiement
 
+### Installation
+
+```sh
+$ git clone https://github.com/VartanAtamian/Gnote.git
+$ cd Gnote
+$ bundle install
+```
+
 ### Création de l'utilisateur de la base de données PostgreSQL
 
 ```sh
 $ sudo -u postgres psql
 postgres=# CREATE USER "pguser123" WITH CREATEDB ENCRYPTED PASSWORD '123soleil';
+```
+
+### Variables d'environnement
+
+```sh
+$ export GMAIL_USERNAME='<adresse gmail>'
+$ export GMAIL_PASSWORD='<mot de passe>'
 ```
