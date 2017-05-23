@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <h3> Exams </h3>
+    <div class="column">
+      <table class="table">
+        <tbody>
+          <% @exams.each do |exam| %>
+            <tr>
+              <%= render exam %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+Contact GitHub API Training Shop Blog About
